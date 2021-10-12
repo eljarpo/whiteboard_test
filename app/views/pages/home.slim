@@ -1,0 +1,19 @@
+section.jumbotron.text-center 
+    .container
+        .row
+            h1.jumbotron-heading Personajes whiteboard
+        .row
+            .border.border-danger.bg-danger style="width:100%;height:200px;border:1px solid #000;"
+        .row
+            - if !user_signed_in?
+                .col-sm
+                    = link_to 'Ingresar al sistema', new_user_session_path, class: 'btn btn-primary my-2'
+            .col-sm
+                = link_to 'Crear personaje!', new_player_path, class: 'btn btn-success my-2'
+        - if user_signed_in?
+            .row.justify-content-center
+                h3 = "Personajes creados"
+                .col
+                    ul.list-group
+                        - current_user.players.each do |player|
+                            li.list-group-item.list-group-item-action = link_to player, player_path(player)

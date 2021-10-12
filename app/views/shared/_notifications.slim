@@ -1,0 +1,11 @@
+div#notification
+  - flash.each do |key, value|
+    - alert_class = key
+    - case key
+    - when 'notice' then alert_class = "success"
+    - when 'alert' then alert_class = "danger"
+    - else alert_class = key
+
+    = content_tag :div, class: "alert alert-#{alert_class} alert-dismissible fade show", role: 'alert', data: { controller: 'notification', target: { notification: flash }} do
+      = value
+      button.btn-close aria-label="Close" data-dismiss="alert" type="button" data-bs-dismiss="alert"

@@ -1,0 +1,58 @@
+div data-controller='player-form'
+    = form_for @player do |f|
+        - if @player.errors.any?
+            .alert.alert-danger#error_explanation
+                h2 = "#{pluralize(@player.errors.count, "error")} prohibio la creacion de este personaje!"
+                ul
+                    - @player.errors.full_messages.each do |message|
+                        li = message
+        - if action_name == 'new'
+            .mb-3
+                = f.label :name, class: 'form-label'
+                = f.text_field :name, class: 'form-control'
+        .mb-3
+            = f.label :race, class: 'form-label'
+            = f.text_field :race, class: 'form-control'
+        .mb-3
+            = f.label :player_type, class: 'form-label'
+            = f.text_field :player_type, class: 'form-control'
+        .mb-3
+            = f.label :story, class: 'form-label'
+            = f.text_area :story, class: 'form-control'
+        .mb-3
+            span Puntos Restantes: 
+            span data-player-form-target='used_points' 2000
+        .mb-3 
+            .alert.alert-success Debes usar todos los puntos
+        .mb-3
+            = f.label :power, class: 'form-label'
+            br
+            = f.range_field :power, :in => 100..1000, :step => '1', data: { action: 'change->player-form#range'}, style: "width: 90%"
+            span data-player-form-target="power_output" 100
+            / = f.number_field :power, :in => 100..1000, step: 1, class: 'form-control', data: { action: 'change->player-form#usePoint', 'player-form-target':"power_output"}
+        .mb-3
+            = f.label :attack, class: 'form-label'
+            br
+            = f.range_field :attack, :in => 100..1000, :step => '1', data: { action: 'change->player-form#range'}, style: "width: 90%"
+            span data-player-form-target="attack_output" 100
+        .mb-3
+            = f.label :defense, class: 'form-label'
+            br
+            = f.range_field :defense, :in => 100..1000, :step => '1', data: { action: 'change->player-form#range'}, style: "width: 90%"
+            span data-player-form-target="defense_output" 100
+        .mb-3
+            = f.label :charisma, class: 'form-label'
+            br
+            = f.range_field :charisma, :in => 100..1000, :step => '1', data: { action: 'change->player-form#range'}, style: "width: 90%"
+            span data-player-form-target="charisma_output" 100
+        .mb-3
+            = f.label :spirit, class: 'form-label'
+            br
+            = f.range_field :spirit, :in => 100..1000, :step => '1', data: { action: 'change->player-form#range'}, style: "width: 90%"
+            span data-player-form-target="spirit_output" 100
+        .mb-3 
+            = f.label :special_ability, class: 'form-label'
+            = f.select :special_ability, options_for_select(Player.special_abilities.map {|k, v| [translate_special_ablities(k), k]}),{}, class: 'form-control'
+   
+        .actions 
+            = f.submit action_name.humanize, class: 'btn btn-primary', data: {'player-form-target': 'submitButton'}

@@ -1,0 +1,10 @@
+json.name @player.name
+json.race @player.race
+json.player_type @player.player_type
+json.story @player.story
+json.power @player.power
+json.attack @player.attack
+json.defense @player.defense
+json.charisma @player.charisma
+json.spirit @player.spirit
+json.special_ability @player.special_ability
