@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Prueba para Whiteboard
 
-Things you may want to cover:
+## Versiones:
 
-* Ruby version
+* Ruby: 2.7.0
+* Rails: 6.1.4
+* Postgresql 11
+## Instrucciones:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Asegurarse de tener las versiones correspondientes
+* Clonar repositiorio: `git clone git@github.com:eljarpo/whiteboard_test.git`
+* instalar dependencias: `bundle install`
+* Activar cache para stimulus reflex (pense en usarlo pero al final no se uso): `rails dev:cache`
+* Crear base de datos: `rails db:create`
+* Crear migraciones de BD: `rails db:migrate`
+* Iniciar servidor: `rails s`
