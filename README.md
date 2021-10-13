@@ -16,3 +16,8 @@ Prueba para Whiteboard
 * Crear base de datos: `rails db:create`
 * Crear migraciones de BD: `rails db:migrate`
 * Iniciar servidor: `rails s`
+
+
+## Rutas API
+
+`localhost:3000/players/<nombre>.json`
